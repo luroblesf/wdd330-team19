@@ -1,7 +1,9 @@
 import { getLocalStorage } from "./utils.mjs";
 
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
+  //The initial code was just an object. With the update of the 'addtoCart', local storage now holds an array of object which is essential for the map function to work.
+  //Get array objective from local storage.
+  const cartItems = getLocalStorage("so-cart") || [];
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 }
