@@ -6,6 +6,16 @@ function renderCartContents() {
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 }
 
+if (!cartItems || cartItems.length === 0) {
+  document.querySelector(".product-list").innerHTML = `
+    <li class="cart-card empty">
+      <p>Your cart is empty.</p>
+    </li>`;
+    return;
+  }
+const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+document.querySelector(".product-list").innerHTML = htmlItems.join("");
+
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
     <a href="#" class="cart-card__image">
@@ -26,3 +36,4 @@ function cartItemTemplate(item) {
 }
 
 renderCartContents();
+
