@@ -261,3 +261,28 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+/* backpack icon styles */
+
+.cart-icon-container {
+  position: relative;
+  display: inline-block;
+}
+.cart-icon-container i {
+  font-size: 24px;
+  color: #333;
+}
+.cart-count {
+  position: absolute;
+  top: 3px;
+  right: -8px;
+  background-color: #9a7c36;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+  line-height: 1;
+  min-width: 18px;
+  text-align: center;
+}
