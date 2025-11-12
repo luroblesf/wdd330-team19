@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage } from './utils.mjs';
 
 function cartItemTemplate(item) {
   return `<li class="cart-card divider">
@@ -15,10 +15,10 @@ function cartItemTemplate(item) {
 }
 
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
+  const cartItems = getLocalStorage('so-cart');
 
   if (!cartItems || cartItems.length === 0) {
-    document.querySelector(".product-list").innerHTML = `
+    document.querySelector('.product-list').innerHTML = `
       <li class="cart-card empty">
         <p>Your cart is empty.</p>
       </li>`;
@@ -26,7 +26,7 @@ function renderCartContents() {
   }
 
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  document.querySelector('.product-list').innerHTML = htmlItems.join('');
 }
 
 renderCartContents();
