@@ -8,5 +8,3 @@ const elementList = document.querySelector(".product-list");
 const productList = new ProductList("tents", dataSource, elementList);
 
 productList.init();
-
-
