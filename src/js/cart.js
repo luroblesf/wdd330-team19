@@ -9,7 +9,9 @@ function renderCartContents() {
 
   //Add click listener for all "Remove" buttons after rendering the cart items
   const removeButtons = document.querySelectorAll(".remove-button");
-  removeButtons.forEach((btn) => btn.addEventListener("click", removeItemFromCart));
+  removeButtons.forEach((btn) =>
+    btn.addEventListener("click", removeItemFromCart),
+  );
 }
 
 function cartItemTemplate(item) {
@@ -33,34 +35,29 @@ function cartItemTemplate(item) {
 }
 
 function removeItemFromCart(event) {
-    //Identify which product was clicked
-    const productId = event.target.dataset.id;
+  //Identify which product was clicked
+  const productId = event.target.dataset.id;
 
-    const listItem = event.target.closest(".cart-card");
+  const listItem = event.target.closest(".cart-card");
 
-    listItem.classList.add("removing");
-    setTimeout(() => {
-      //Get current items
-      let cartItems = getLocalStorage("so-cart") || [];
+  listItem.classList.add("removing");
+  setTimeout(() => {
+    //Get current items
+    let cartItems = getLocalStorage("so-cart") || [];
 
-      //Find the index of the item to remove
-      const itemIndex = cartItems.findIndex((item) => item.Id === productId);
+    //Find the index of the item to remove
+    const itemIndex = cartItems.findIndex((item) => item.Id === productId);
 
-      if (itemIndex !== -1) {
-        cartItems.splice(itemIndex, 1);}
+    if (itemIndex !== -1) {
+      cartItems.splice(itemIndex, 1);
+    }
 
-      //Save the new cart Items array back to local storage
-      setLocalStorage("so-cart", cartItems);
+    //Save the new cart Items array back to local storage
+    setLocalStorage("so-cart", cartItems);
 
-      //Render new Cart Contents
-      renderCartContents();
-    }, 200);
-
-    
-   
-
-
+    //Render new Cart Contents
+    renderCartContents();
+  }, 200);
 }
-
 
 renderCartContents();
