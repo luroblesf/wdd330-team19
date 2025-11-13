@@ -11,11 +11,10 @@ export default class ProductData {
     async init () {
         
         document.getElementById('addToCart')
-            .addEventListener('click', this.addToCart.bind(this));
+                .addEventListener('click', this.addToCart.bind(this));
 
         this.dataSource.findProductById(this.productId).then(product => {
-        this.product = product; 
-    q   });
+        this.product = product;    });
         
         this.renderProductDetails();
     }
@@ -31,10 +30,10 @@ export default class ProductData {
         document.querySelector('name').textContent = product.Name;
         document.getElementById('price').textContent = product.Price;
         document.getElementById('color').textContent = product.Color;
-        document.getElementById('description').itextContent = product.Description;
+        document.getElementById('description').textContent = product.Description;
 
         const image = document.createElement('img');
-        image.src = product.Image;
+        image.src = product.Images.PrimaryLarge;
         image.alt = product.Name
 
         document.getElementById('addToCart').dataset.id = product.Id;
