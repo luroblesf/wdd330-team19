@@ -241,6 +241,19 @@ button {
   grid-column: 3;
 }
 
+
+.remove-button {
+  grid-row: 1/4;
+}
+
+.cart-card.removing {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 0.2s ease-out, transform 0.2s ease;
+}
+
+
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
