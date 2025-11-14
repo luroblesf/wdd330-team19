@@ -1,8 +1,10 @@
-import { loadHeaderFooter, getParam } from "./utils.mjs";
+import { loadHeaderFooter, getParam, initializeCartCount } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
 import ProductList from "./ProductList.mjs";
 
-loadHeaderFooter();
+loadHeaderFooter().then(() => {
+  initializeCartCount();
+});
 
 const category = getParam("category");
 
