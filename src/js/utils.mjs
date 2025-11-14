@@ -69,10 +69,10 @@ export function incrementCartCount() {
   const cartCountElement = document.querySelector(".cart-count");
 
   if (cartCountElement) {
-    let currentCount = parseInt(localStorage.getItem("cartCount")) || 0;
-    currentCount += 1;
-    localStorage.setItem("cartCount", currentCount);
-    cartCountElement.textContent = currentCount;
+    const cartItems = JSON.parse(localStorage.getItem("so-cart")) || [];
+    const count = cartItems.length;
+    cartCountElement.textContent = count;
+
   }
 }
 
@@ -81,7 +81,8 @@ export function incrementCartCount() {
 export function initializeCartCount() {
   const cartCountElement = document.querySelector(".cart-count");
   if (cartCountElement) {
-    const savedCount = parseInt(localStorage.getItem("cartCount")) || 0;
-    cartCountElement.textContent = savedCount;
+    const cartItems = JSON.parse(localStorage.getItem("so-cart")) || [];
+    const count = cartItems.length;
+    cartCountElement.textContent = count;
   }
 }
