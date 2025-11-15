@@ -37,3 +37,20 @@ function cartItemTemplate(item) {
 
 renderCartContents();
 
+function updateCartTotal() {
+  const cartFooter = document.querySelector(".cart-footer");
+  const cartTotalElement = document.querySelector(".cart-total");
+  const cartItems = JSON.parse(localStorage.getItem("so-cart")) || [];
+
+  if (cartItems.length > 0) {
+    cartFooter.classList.remove("hide");
+
+    const total = cartItems.reduce((sum, item) => {
+      return sum + (item.FinalPrice * item.quantity);
+    }, 0);
+
+    cartTotalElement.innerHTML = `Total: $${total.toFixed(2)}`;
+  }
+}
+
+updateCartTotal();
