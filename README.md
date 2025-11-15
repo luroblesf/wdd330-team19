@@ -24,7 +24,7 @@ https://wdd330-team19.netlify.app/
 
 
 ### Sleep Outside Homepage
-https://luroblesf.github.io/wdd330-team19/src/
+https://luroblesf.github.io/wdd330-team19/
 
 ---
 _BYU-Pathway Worldwide improves lives through access to spiritually based, online affordable higher education. Its mission is to develop disciples of Jesus Christ who are leaders in their homes, the Church, and their communities._
