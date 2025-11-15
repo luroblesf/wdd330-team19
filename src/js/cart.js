@@ -39,7 +39,7 @@ function cartItemTemplate(item) {
       <h2 class="card__name">${item.Name}</h2>
     </a>
     <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-    <p class="cart-card__quantity">qty: 1</p>
+    <p class="cart-card__quantity">Quantity: ${item.Quantity}</p>
     <p class="cart-card__price">$${item.FinalPrice}</p>
     <button type="button" class="remove-button" data-id=${item.Id}>🗑️</button>
   </li>`;
@@ -58,10 +58,14 @@ function removeItemFromCart(event) {
     let cartItems = getLocalStorage("so-cart") || [];
 
     //Find the index of the item to remove
-    const itemIndex = cartItems.findIndex((item) => item.Id === productId);
+    const items = cartItems.find((item) => item.Id === productId);
 
-    if (itemIndex !== -1) {
-      cartItems.splice(itemIndex, 1);
+    if (items) {
+      if (items.Quantity > 1) {
+        items.Quantity--;
+      } else {
+        cartItems = cartItems.filter((cartItem) => cartItem.Id !== productId);
+      }
     }
 
     setLocalStorage("so-cart", cartItems);
