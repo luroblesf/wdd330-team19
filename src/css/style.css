@@ -204,6 +204,11 @@ button {
   margin: 0.5em 0;
 }
 
+/* Product Image Style */
+.product-card img {
+    max-width: 50%;
+}
+
 .card__brand {
   font-size: var(--small-font);
 }
@@ -288,6 +293,7 @@ button {
     font-size: inherit;
     grid-template-columns: 150px auto 15%;
   }
+
 }
 
 footer {
@@ -332,4 +338,11 @@ footer {
 .alert-item.fade-in {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media screen and (min-width: 768px) {
+  /* Product Image Styles */
+  .product-card img {
+      max-width: 100%;
+  }
 }
