@@ -66,23 +66,25 @@ export async function loadHeaderFooter() {
 }
 
 export function incrementCartCount() {
+  const cart = getLocalStorage("so-cart") || [];
+    const total = cart.reduce((sum, item) => sum + (item.Quantity || 1), 0);
+  
   const cartCountElement = document.querySelector(".cart-count");
-
   if (cartCountElement) {
-    const cartItems = JSON.parse(localStorage.getItem("so-cart")) || [];
-    const count = cartItems.length;
-    cartCountElement.textContent = count;
-
+    cartCountElement.textContent = total;
+    
   }
 }
 
 
 // Initialize cart count on page load
 export function initializeCartCount() {
+    const cart = getLocalStorage("so-cart") || [];
+    const total = cart.reduce((sum, item) => sum + (item.Quantity || 1), 0);
+  
   const cartCountElement = document.querySelector(".cart-count");
   if (cartCountElement) {
-    const cartItems = JSON.parse(localStorage.getItem("so-cart")) || [];
-    const count = cartItems.length;
-    cartCountElement.textContent = count;
+    cartCountElement.textContent = total;
+    
   }
 }
