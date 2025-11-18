@@ -64,3 +64,27 @@ export async function loadHeaderFooter() {
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
 }
+
+export function incrementCartCount() {
+  const cart = getLocalStorage("so-cart") || [];
+    const total = cart.reduce((sum, item) => sum + (item.Quantity || 1), 0);
+  
+  const cartCountElement = document.querySelector(".cart-count");
+  if (cartCountElement) {
+    cartCountElement.textContent = total;
+    
+  }
+}
+
+
+// Initialize cart count on page load
+export function initializeCartCount() {
+    const cart = getLocalStorage("so-cart") || [];
+    const total = cart.reduce((sum, item) => sum + (item.Quantity || 1), 0);
+  
+  const cartCountElement = document.querySelector(".cart-count");
+  if (cartCountElement) {
+    cartCountElement.textContent = total;
+    
+  }
+}

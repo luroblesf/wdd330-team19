@@ -1,8 +1,11 @@
+import { loadHeaderFooter, getParam, initializeCartCount } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
 import ProductList from "./ProductList.mjs";
 import { loadHeaderFooter } from "./utils.mjs";
 
-loadHeaderFooter();
+loadHeaderFooter().then(() => {
+  initializeCartCount();
+});
 
 const category = getParam('category');
 // first create an instance of the ProductData class.
