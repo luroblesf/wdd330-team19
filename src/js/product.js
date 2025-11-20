@@ -1,12 +1,10 @@
-import { loadHeaderFooter, getParam, initializeCartCount } from "./utils.mjs";
-import ProductData from "./ExternalServices.mjs";
+import { getParam, loadHeaderFooter } from "./utils.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 import ProductDetails from "./ProductDetails.mjs";
 
-loadHeaderFooter().then(() => {
-  initializeCartCount();
-});
+loadHeaderFooter();
 
-const dataSource = new ProductData("tents");
+const dataSource = new ExternalServices("tents");
 const productID = getParam("product");
 
 const product = new ProductDetails(productID, dataSource);
