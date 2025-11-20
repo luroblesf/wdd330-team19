@@ -1,5 +1,5 @@
 import { loadHeaderFooter, getParam, initializeCartCount } from "./utils.mjs";
-import ProductData from "./ProductData.mjs";
+import ProductData from "./ExternalServices.mjs";
 import ProductDetails from "./ProductDetails.mjs";
 
 loadHeaderFooter().then(() => {
