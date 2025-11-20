@@ -96,10 +96,11 @@ export default class CheckoutProcess {
         //console.log(order);
 
         try {
-            const response = await services.checkout(order);
-            console.log(response);
+            const response = await CheckoutProcess.checkout(order);
+            console.log('Checkout successfull:', response);
         } catch (err) {
-            console.log(err);
+            console.error('Error:', err);
         }
+
     }
 }

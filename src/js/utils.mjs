@@ -88,3 +88,36 @@ export function initializeCartCount() {
     
   }
 }
+
+//
+export function alertMessage(message, scroll = true) {
+  // Remove any existing alert
+  const existing = document.querySelector('.custom-alert');
+  if (existing) existing.remove();
+
+  // Create alert element
+  const alert = document.createElement('div');
+  alert.className = 'custom-alert';
+  alert.setAttribute('role', 'alert');
+  alert.innerHTML = `
+    ${message}
+    <button class="close-alert" aria-label="Close">&times;</button>
+  `;
+
+  // Insert at top of <main>
+  const main = document.querySelector('main');
+  if (main) main.prepend(alert);
+
+  // Scroll to top if needed
+  if (scroll) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Close button
+  alert.querySelector('.close-alert').addEventListener('click', () => {
+    alert.remove();
+  });
+}
+
+
+
