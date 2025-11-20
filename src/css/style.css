@@ -90,7 +90,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
 
@@ -206,7 +206,7 @@ button {
 
 /* Product Image Style */
 .product-card img {
-    max-width: 50%;
+  max-width: 50%;
 }
 
 .card__brand {
@@ -307,10 +307,12 @@ footer {
   position: relative;
   display: inline-block;
 }
+
 .cart-icon-container i {
   font-size: 24px;
   color: #333;
 }
+
 .cart-count {
   position: absolute;
   top: 5px;
@@ -341,8 +343,74 @@ footer {
 }
 
 @media screen and (min-width: 768px) {
+
   /* Product Image Styles */
   .product-card img {
-      max-width: 100%;
+    max-width: 100%;
   }
+}
+
+/* CheckOut Button styles */
+.checkout-container {
+  text-align: right;
+  margin-top: 1rem;
+}
+
+.checkout-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #2e8b57;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.checkout-button:hover {
+  background-color: #246b45;
+}
+
+/* Form Styles */
+.form-checkout {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 300px 1fr;
+}
+
+.form-checkout .summary h3 {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 16px;
+  color: #525b0f;
+}
+
+.form-checkout .summary table {
+  display: grid;
+  border: 1px solid #525b0f;
+}
+
+.form-checkout fieldset {
+  display: grid;
+  gap: 2px;
+
+  margin-bottom: 16px;
+}
+
+.form-checkout fieldset legend {
+  font-size: 14px;
+  color: #525b0f;
+  font-weight: 600;
+}
+
+.form-checkout fieldset label {
+  margin-top: 8px;
+}
+
+.form-checkout fieldset input {
+  height: 40px;
+}
+
+.form-checkout button {
+  margin-bottom: 40px;
 }
