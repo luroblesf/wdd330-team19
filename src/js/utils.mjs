@@ -27,12 +27,17 @@ export function getParam(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const product = urlParams.get(param);
-  return product
+  return product;
 }
 
-
 // Insert the template into the parentElement
-export function renderListWithTemplate(template, parentElement, list, position = "afterbegin", clear = false) {
+export function renderListWithTemplate(
+  template,
+  parentElement,
+  list,
+  position = "afterbegin",
+  clear = false,
+) {
   const htmlStrings = list.map(template);
   // if clear is true we need to clear out the contents of the parent.
   if (clear) {
@@ -67,57 +72,51 @@ export async function loadHeaderFooter() {
 
 export function incrementCartCount() {
   const cart = getLocalStorage("so-cart") || [];
-    const total = cart.reduce((sum, item) => sum + (item.Quantity || 1), 0);
-  
+  const total = cart.reduce((sum, item) => sum + (item.Quantity || 1), 0);
   const cartCountElement = document.querySelector(".cart-count");
+
   if (cartCountElement) {
-    cartCountElement.textContent = total;
-    
+   cartCountElement.textContent = total;
   }
 }
 
-
 // Initialize cart count on page load
 export function initializeCartCount() {
-    const cart = getLocalStorage("so-cart") || [];
-    const total = cart.reduce((sum, item) => sum + (item.Quantity || 1), 0);
-  
-  const cartCountElement = document.querySelector(".cart-count");
-  if (cartCountElement) {
-    cartCountElement.textContent = total;
-    
-  }
+ const cart = getLocalStorage("so-cart") || [];
+ const total = cart.reduce((sum, item) => sum + (item.Quantity || 1), 0);
+
+ const cartCountElement = document.querySelector(".cart-count");
+ if (cartCountElement) {
+   cartCountElement.textContent = total;
+ }
 }
 
 //
 export function alertMessage(message, scroll = true) {
   // Remove any existing alert
-  const existing = document.querySelector('.custom-alert');
+  const existing = document.querySelector(".custom-alert");
   if (existing) existing.remove();
 
   // Create alert element
-  const alert = document.createElement('div');
-  alert.className = 'custom-alert';
-  alert.setAttribute('role', 'alert');
+  const alert = document.createElement("div");
+  alert.className = "custom-alert";
+  alert.setAttribute("role", "alert");
   alert.innerHTML = `
     ${message}
     <button class="close-alert" aria-label="Close">&times;</button>
   `;
 
   // Insert at top of <main>
-  const main = document.querySelector('main');
+  const main = document.querySelector("main");
   if (main) main.prepend(alert);
 
   // Scroll to top if needed
   if (scroll) {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   // Close button
-  alert.querySelector('.close-alert').addEventListener('click', () => {
+  alert.querySelector(".close-alert").addEventListener("click", () => {
     alert.remove();
   });
 }
-
-
-

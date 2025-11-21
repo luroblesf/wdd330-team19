@@ -4,7 +4,7 @@ import {
   incrementCartCount,
   initializeCartCount,
 } from "./utils.mjs";
-import ProductData from "./ExternalServices.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 import ProductList from "./ProductList.mjs";
 
 loadHeaderFooter().then(() => {
@@ -17,7 +17,7 @@ document.querySelectorAll("#addToCart").forEach((button) => {
 
 const element = document.querySelector(".product-list");
 if (element) {
-  const dataSource = new ProductData("tents");
+  const dataSource = new ExternalServices("tents");
 
   const productList = new ProductList("Tents", dataSource, element);
 
