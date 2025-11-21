@@ -9,24 +9,26 @@ import {
 loadHeaderFooter();
 
 function renderCartContents() {
-   const cartItems = getLocalStorage("so-cart");
+  const cartItems = getLocalStorage("so-cart");
 
-   if (!cartItems || cartItems.length === 0) {
-     document.querySelector(".product-list").innerHTML = `
+  if (!cartItems || cartItems.length === 0) {
+    document.querySelector(".product-list").innerHTML = `
       <li class="cart-card empty">
         <p>Your cart is empty.</p>
       </li>`;
-     return;
-   }
+    
 
-   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-   document.querySelector(".product-list").innerHTML = htmlItems.join("");
+    return;
+  }
 
-   //Add click listener for all "Remove" buttons after rendering the cart items
-   const removeButton = document.querySelectorAll(".remove-button");
-   removeButton.forEach((button) =>
-     button.addEventListener("click", removeItemFromCart),
-   );
+  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+  document.querySelector(".product-list").innerHTML = htmlItems.join("");
+
+  //Add click listener for all "Remove" buttons after rendering the cart items
+  const removeButton = document.querySelectorAll(".remove-button");
+  removeButton.forEach((button) =>
+    button.addEventListener("click", removeItemFromCart),
+  );
 }
 
 function cartItemTemplate(item) {
@@ -62,18 +64,17 @@ function removeItemFromCart(event) {
     //Find the index of the item to remove
     const items = cartItems.find((item) => item.Id === productId);
 
-       if (items) {
-         if (items.Quantity > 1) {
-           items.Quantity--;
-         } else {
-           cartItems = cartItems.filter(
-             (cartItem) => cartItem.Id !== productId,
-           );
-         }
-       }
+    if (items) {
+      if (items.Quantity > 1) {
+        items.Quantity--;
+      } else {
+        cartItems = cartItems.filter((cartItem) => cartItem.Id !== productId);
+      }
+    }
 
     setLocalStorage("so-cart", cartItems);
     incrementCartCount();
+    updateCartTotal();
     renderCartContents();
   }, 300);
 }
@@ -91,6 +92,10 @@ function updateCartTotal() {
     }, 0);
 
     cartTotalElement.innerHTML = `Total: $${total.toFixed(2)}`;
+  }
+
+  else {
+    cartFooter.classList.add("hide");
   }
 }
 
