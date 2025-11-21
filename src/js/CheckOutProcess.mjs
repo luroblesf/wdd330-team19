@@ -36,7 +36,7 @@ export default class CheckoutProcess {
         );
         // calculate the total of all the items in the cart
         
-        const amounts = this.list.map((item) => (item.FinalPrice * 0.85) * item.Quantity); // converted to euro
+        const amounts = this.list.map((item) => (item.FinalPrice) * item.Quantity); // converted to euro
         this.itemTotal = amounts.reduce((sum, item) => sum + item);
         summaryElement.innerText = `$${this.itemTotal.toFixed(2)}`;
     }
@@ -60,9 +60,9 @@ export default class CheckoutProcess {
         const shipping = document.querySelector(`${this.outputSelector} #shipping`);
         const orderTotal = document.querySelector(`${this.outputSelector} #orderTotal`);
 
-        tax.innerText = `$${this.tax.toFixed(2)}`;
-        shipping.innerText = `$${this.shipping.toFixed(2)}`;
-        orderTotal.innerText = `$${this.orderTotal.toFixed(2)}`;
+        tax.innerText = `$${(this.tax).toFixed(2)}`;
+        shipping.innerText = `$${(this.shipping).toFixed(2)}`;
+        orderTotal.innerText = `$${(this.orderTotal).toFixed(2)}`;
     }
 
     async checkout() {
