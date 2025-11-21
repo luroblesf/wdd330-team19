@@ -435,3 +435,18 @@ footer {
   display: none;
   
 }
+
+/* Search Form Styles */
+.search-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.search-form input {
+  padding: 0.5rem;
+  flex: 1;
+}
+
+.search-form button {
+  padding: 0.5rem 1rem;
+}
