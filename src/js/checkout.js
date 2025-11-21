@@ -1,8 +1,11 @@
-import { loadHeaderFooter } from "./utils.mjs";
+import { loadHeaderFooter, initializeCartCount } from "./utils.mjs";
 import CheckoutProcess from "./CheckOutProcess.mjs";
 
 
-loadHeaderFooter();
+
+
+
+
 
 const order = new CheckoutProcess("so-cart", ".checkout-summary");
 order.init();
@@ -13,7 +16,7 @@ document.querySelector("#zip")
 document.addEventListener("blur", order.calculateOrderTotal.bind(order));
 
 // listening for click on the button
-document.querySelector('#checkoutSubmit').addEventListener('click', async (e) => {
+document.querySelector('#checkoutSubmit').addEventListener("click", async (e) => {
     e.preventDefault();
 
     const myForm = document.forms[0];
@@ -22,14 +25,19 @@ document.querySelector('#checkoutSubmit').addEventListener('click', async (e) =>
 
     if (isValid) {
         try {
-            const response = await myCheckout.checkout();
-            console.log('Checkout successful:', response);
+            const response = await order.checkout();
+            alert("Checkout successful:", response);
 
             // Redirect to success page
-            window.location.href = 'checkoutsuccess.html';
+            window.location.href = "../cart/";
         } catch (err) {
-            console.error('Checkout error:', err);
-            alert('There was a problem with the payment. Please try again.');
+            console.error("Checkout error:", err);
+            alert("There was a problem with the payment. Please try again.");
         }
     }
 });
+
+loadHeaderFooter().then(() => {
+  initializeCartCount();
+});
+

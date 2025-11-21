@@ -415,6 +415,33 @@ footer {
 }
 
 /* Form Styles */
+
+form fieldset{
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+
+}
+
+.order__summary {
+  display: flex;
+  flex-direction: column; /* stack each row vertically */
+  gap: 0.5rem; /* space between rows */
+}
+
+.order__summary div {
+  display: flex;
+  justify-content: space-between; /* label on left, value on right */
+  
+}
+
+.order__summary span:nth-child(odd){
+  font-weight: bold;
+}
+
+
+
 .form-checkout {
   display: grid;
   gap: 16px;

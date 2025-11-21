@@ -23,11 +23,17 @@ function renderCartContents() {
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 
+  
+
   //Add click listener for all "Remove" buttons after rendering the cart items
   const removeButton = document.querySelectorAll(".remove-button");
   removeButton.forEach((button) =>
     button.addEventListener("click", removeItemFromCart),
   );
+
+
+
+
 }
 
 function cartItemTemplate(item) {

@@ -30,11 +30,15 @@ export default class CheckoutProcess {
         const itemNumElement = document.querySelector(
             this.outputSelector + " #num-items"
         );
-        itemNumElement.innerText = this.list.length;
+        itemNumElement.innerText = this.list.reduce(
+          (sum, item) => sum + (item.Quantity || 1),
+          0,
+        );
         // calculate the total of all the items in the cart
-        const amounts = this.list.map((item) => (item.FinalPrice * 0.85)); // converted to euro
+        
+        const amounts = this.list.map((item) => (item.FinalPrice * 0.85) * item.Quantity); // converted to euro
         this.itemTotal = amounts.reduce((sum, item) => sum + item);
-        summaryElement.innerText = `$${this.itemTotal}`;;
+        summaryElement.innerText = `$${this.itemTotal.toFixed(2)}`;
     }
 
     calculateOrderTotal() {
@@ -79,6 +83,8 @@ export default class CheckoutProcess {
             console.error('Error:', err);
         }
 
+        localStorage.clear();
+
     }
 }
 
@@ -102,7 +108,7 @@ function packageItems(items) {
       id: item.Id,
       price: item.FinalPrice,
       name: item.Name,
-      quantity: 1,
+      quantity: item.Quantity,
     };
   });
   return simplifiedItems;
