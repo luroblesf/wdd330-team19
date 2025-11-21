@@ -11,31 +11,34 @@ const listing = new ProductList(category, dataSource, element);
 
 listing.init();
 
-
 // Search functionality//
 
 document.getElementById("search-form").addEventListener("submit", async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const query = document.getElementById("search-input").value.trim().toLowerCase();
-    const titleSpan = document.querySelector(".title");
+  const query = document
+    .getElementById("search-input")
+    .value.trim()
+    .toLowerCase();
+  const titleSpan = document.querySelector(".title");
 
-    if (!query) return;
+  if (!query) return;
 
-    const allProducts = await dataSource.getData(category);
+  const allProducts = await dataSource.getData(category);
 
-    const filteredProducts = allProducts.filter((product) =>
-        product.NameWithoutBrand.toLowerCase().includes(query) ||
-        product.Brand.Name.toLowerCase().includes(query)
-    );
+  const filteredProducts = allProducts.filter(
+    (product) =>
+      product.NameWithoutBrand.toLowerCase().includes(query) ||
+      product.Brand.Name.toLowerCase().includes(query),
+  );
 
-    listing.listElement.innerHTML = "";
+  listing.listElement.innerHTML = "";
 
-    titleSpan.textContent = `Results for "${query}"`;
+  titleSpan.textContent = `Results for "${query}"`;
 
-    if (filteredProducts.length > 0) {
-        listing.renderList(filteredProducts); 
-    } else {
-        listing.listElement.innerHTML = `<li>No products found matching "${query}".</li>`; 
-    };
+  if (filteredProducts.length > 0) {
+    listing.renderList(filteredProducts);
+  } else {
+    listing.listElement.innerHTML = `<li>No products found matching "${query}".</li>`;
+  }
 });

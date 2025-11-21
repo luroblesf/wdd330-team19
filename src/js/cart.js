@@ -23,22 +23,14 @@ function renderCartContents() {
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 
-  
-
   //Add click listener for all "Remove" buttons after rendering the cart items
   const removeButton = document.querySelectorAll(".remove-button");
   removeButton.forEach((button) =>
     button.addEventListener("click", removeItemFromCart),
   );
-
-
-
-
 }
 
 function cartItemTemplate(item) {
- 
-
   return `<li class="cart-card divider">
     <a href="#" class="cart-card__image">
       <img
@@ -94,11 +86,10 @@ function updateCartTotal() {
   if (cartItems.length > 0) {
     cartFooter.classList.remove("hide");
 
-    const total = cartItems.reduce((sum, item) => {
-      return sum + (item.FinalPrice) * item.Quantity;
-      
-    }, 0);
-
+    const total = cartItems.reduce(
+      (sum, item) => sum + item.FinalPrice * item.Quantity,
+      0,
+    );
     cartTotalElement.innerHTML = `Total: $${total.toFixed(2)}`;
   } else {
     cartFooter.classList.add("hide");

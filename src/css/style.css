@@ -90,7 +90,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square>div {
+.logo--square > div {
   margin-top: -1.7em;
 }
 
@@ -318,8 +318,6 @@ button {
   display: none;
 }
 
-
-
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
@@ -341,8 +339,6 @@ footer {
   border-top: 1px solid var(--tertiary-color);
   padding: 1em;
 }
-
-
 
 /* backpack icon styles */
 
@@ -386,7 +382,6 @@ footer {
 }
 
 @media screen and (min-width: 768px) {
-
   /* Product Image Styles */
   .product-card img {
     max-width: 100%;
@@ -409,21 +404,18 @@ footer {
   transition: background-color 0.3s ease;
 }
 
-
 .checkOutButton a {
   color: white;
   text-decoration: none;
-  
 }
 
 /* Form Styles */
 
-form fieldset{
+form fieldset {
   margin-bottom: 2rem;
   padding: 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
-
 }
 
 .order__summary {
@@ -435,14 +427,11 @@ form fieldset{
 .order__summary div {
   display: flex;
   justify-content: space-between; /* label on left, value on right */
-  
 }
 
-.order__summary span:nth-child(odd){
+.order__summary span:nth-child(odd) {
   font-weight: bold;
 }
-
-
 
 .form-checkout {
   display: grid;
@@ -485,7 +474,6 @@ form fieldset{
   margin-bottom: 40px;
 }
 
-
 .cart-footer {
   margin-top: 20px;
   padding: 10px;
@@ -495,7 +483,8 @@ form fieldset{
 }
 
 .hide {
-  display: none;}
+  display: none;
+}
 /*Alert Message Styles*/
 .custom-alert {
   background-color: #fff3cd;
@@ -507,7 +496,6 @@ form fieldset{
   position: relative;
   font-size: 1rem;
   display: none;
-  
 }
 
 /* Search Form Styles */
@@ -524,8 +512,9 @@ form fieldset{
   border: none;
   font-size: 1.25em;
   color: #856404;
-  cursor: pointer;}
-  
+  cursor: pointer;
+}
+
 .search-form input {
   padding: 0.5rem;
   flex: 1;
