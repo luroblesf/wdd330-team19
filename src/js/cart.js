@@ -16,7 +16,6 @@ function renderCartContents() {
       <li class="cart-card empty">
         <p>Your cart is empty.</p>
       </li>`;
-    
 
     return;
   }
@@ -24,14 +23,22 @@ function renderCartContents() {
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 
+  
+
   //Add click listener for all "Remove" buttons after rendering the cart items
   const removeButton = document.querySelectorAll(".remove-button");
   removeButton.forEach((button) =>
     button.addEventListener("click", removeItemFromCart),
   );
+
+
+
+
 }
 
 function cartItemTemplate(item) {
+ 
+
   return `<li class="cart-card divider">
     <a href="#" class="cart-card__image">
       <img
@@ -44,7 +51,7 @@ function cartItemTemplate(item) {
     </a>
     <p class="cart-card__color">${item.Colors[0].ColorName}</p>
     <p class="cart-card__quantity">Quantity: ${item.Quantity}</p>
-    <p class="cart-card__price">$${item.FinalPrice}</p>
+    <p class="cart-card__price">${item.FinalPrice}</p>
     <button type="button" class="remove-button" data-id=${item.Id}>🗑️</button>
   </li>`;
 }
@@ -88,13 +95,12 @@ function updateCartTotal() {
     cartFooter.classList.remove("hide");
 
     const total = cartItems.reduce((sum, item) => {
-      return sum + item.FinalPrice * item.Quantity;
+      return sum + (item.FinalPrice) * item.Quantity;
+      
     }, 0);
 
     cartTotalElement.innerHTML = `Total: $${total.toFixed(2)}`;
-  }
-
-  else {
+  } else {
     cartFooter.classList.add("hide");
   }
 }
