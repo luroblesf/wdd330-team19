@@ -3,30 +3,7 @@ import ExternalServices from "./ExternalServices.mjs";
 
 const services = new ExternalServices();
 
-function formDataToJSON(formElement) {
-    // convert the form data to a JSON object
-    const formData = new FormData(formElement);
-    const convertedJSON = {};
-    formData.forEach((value, key) => {
-        convertedJSON[key] = value;
-    });
 
-    return convertedJSON;
-}
-
-function packageItems(items) {
-
-    const simplifiedItems = items.map((item) => {
-        console.log(item);
-        return {
-            id: item.Id,
-            price: item.FinalPrice,
-            name: item.Name,
-            quantity: 1,
-        };
-    });
-    return simplifiedItems;
-}
 
 export default class CheckoutProcess {
     constructor(key, outputSelector) {
@@ -55,7 +32,7 @@ export default class CheckoutProcess {
         );
         itemNumElement.innerText = this.list.length;
         // calculate the total of all the items in the cart
-        const amounts = this.list.map((item) => item.FinalPrice);
+        const amounts = this.list.map((item) => (item.FinalPrice * 0.85)); // converted to euro
         this.itemTotal = amounts.reduce((sum, item) => sum + item);
         summaryElement.innerText = `$${this.itemTotal}`;;
     }
@@ -103,4 +80,30 @@ export default class CheckoutProcess {
         }
 
     }
+}
+
+// Functions
+
+function formDataToJSON(formElement) {
+  // convert the form data to a JSON object
+  const formData = new FormData(formElement);
+  const convertedJSON = {};
+  formData.forEach((value, key) => {
+    convertedJSON[key] = value;
+  });
+
+  return convertedJSON;
+}
+
+function packageItems(items) {
+  const simplifiedItems = items.map((item) => {
+    console.log(item);
+    return {
+      id: item.Id,
+      price: item.FinalPrice,
+      name: item.Name,
+      quantity: 1,
+    };
+  });
+  return simplifiedItems;
 }

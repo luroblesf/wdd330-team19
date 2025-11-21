@@ -16,7 +16,6 @@ function renderCartContents() {
       <li class="cart-card empty">
         <p>Your cart is empty.</p>
       </li>`;
-    
 
     return;
   }
@@ -32,6 +31,11 @@ function renderCartContents() {
 }
 
 function cartItemTemplate(item) {
+  const euroPrice = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "EUR",
+  }).format(Number(item.FinalPrice) * 0.85);
+
   return `<li class="cart-card divider">
     <a href="#" class="cart-card__image">
       <img
@@ -44,7 +48,7 @@ function cartItemTemplate(item) {
     </a>
     <p class="cart-card__color">${item.Colors[0].ColorName}</p>
     <p class="cart-card__quantity">Quantity: ${item.Quantity}</p>
-    <p class="cart-card__price">$${item.FinalPrice}</p>
+    <p class="cart-card__price">${euroPrice}</p>
     <button type="button" class="remove-button" data-id=${item.Id}>🗑️</button>
   </li>`;
 }
@@ -88,13 +92,12 @@ function updateCartTotal() {
     cartFooter.classList.remove("hide");
 
     const total = cartItems.reduce((sum, item) => {
-      return sum + item.FinalPrice * item.Quantity;
+      return sum + (item.FinalPrice * 0.85) * item.Quantity;
+      
     }, 0);
 
-    cartTotalElement.innerHTML = `Total: $${total.toFixed(2)}`;
-  }
-
-  else {
+    cartTotalElement.innerHTML = `Total: ${total.toFixed(2)}`;
+  } else {
     cartFooter.classList.add("hide");
   }
 }
