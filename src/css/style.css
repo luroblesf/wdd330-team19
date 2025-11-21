@@ -422,7 +422,7 @@ footer {
   margin-bottom: 40px;
 }
 
-<<<<<<< HEAD
+
 .cart-footer {
   margin-top: 20px;
   padding: 10px;
@@ -433,32 +433,5 @@ footer {
 
 .hide {
   display: none;
-=======
-/*Alert Message Styles*/
-.custom-alert {
-  background-color: #fff3cd;
-  color: #856404;
-  padding: 1em;
-  border: 1px solid #ffeeba;
-  border-radius: 5px;
-  margin-bottom: 1em;
-  position: relative;
-  font-size: 1rem;
-}
-
-.custom-alert strong {
-  display: block;
-  margin-bottom: 0.5em;
-}
-
-.close-alert {
-  position: absolute;
-  top: 0.5em;
-  right: 0.75em;
-  background: none;
-  border: none;
-  font-size: 1.25em;
-  color: #856404;
-  cursor: pointer;
->>>>>>> ilrf--individual4
+  
 }
