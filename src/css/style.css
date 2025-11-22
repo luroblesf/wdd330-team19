@@ -523,3 +523,13 @@ form fieldset {
 .search-form button {
   padding: 0.5rem 1rem;
 }
+
+.breadcrumb-list {
+  display: flex;
+  margin: 5px 10px;
+  text-decoration: none;
+  list-style-type: none;
+}
+.breadcrumb-list li {
+  padding: 5px;
+}
