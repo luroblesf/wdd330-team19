@@ -523,3 +523,31 @@ form fieldset {
 .search-form button {
   padding: 0.5rem 1rem;
 }
+
+#product-card__price {
+  font-size: 1.5em;
+  color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #888;
+  margin-right: 8px;
+}
+
+.discounted-price {
+  font-weight: bold;
+  color: #FF4500;
+}
+
+.discount-badge {
+  background-color: #FF4500;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  margin-left: 10px;
+}
