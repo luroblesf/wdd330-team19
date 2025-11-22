@@ -28,22 +28,35 @@ function renderCartContents() {
   removeButton.forEach((button) =>
     button.addEventListener("click", removeItemFromCart),
   );
+
+  const quantityInputs = document.querySelectorAll(".quantity-input");
+  quantityInputs.forEach((input) =>
+    input.addEventListener("change", updateItemQuantity)
+  );
 }
 
 function cartItemTemplate(item) {
   return `<li class="cart-card divider">
     <a href="#" class="cart-card__image">
-      <img
-        src="${item.Images.PrimaryLarge}"
-        alt="${item.Name}"
-      />
+      <img src="${item.Images.PrimaryLarge}" alt="${item.Name}" />
     </a>
     <a href="#">
       <h2 class="card__name">${item.Name}</h2>
     </a>
     <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-    <p class="cart-card__quantity">Quantity: ${item.Quantity}</p>
-    <p class="cart-card__price">${item.FinalPrice}</p>
+
+    <!-- Campo editable de cantidad -->
+    <label for="quantity-${item.Id}">Quantity:</label>
+    <input
+      type="number"
+      class="quantity-input"
+      id="quantity-${item.Id}"
+      data-id="${item.Id}"
+      value="${item.Quantity}"
+      min="1"
+    />
+
+    <p class="cart-card__price">$${item.FinalPrice.toFixed(2)}</p>
     <button type="button" class="remove-button" data-id=${item.Id}>🗑️</button>
   </li>`;
 }
@@ -76,6 +89,25 @@ function removeItemFromCart(event) {
     updateCartTotal();
     renderCartContents();
   }, 300);
+}
+
+function updateItemQuantity(event) {
+  const input = event.target;
+  const newQuantity = parseInt(input.value);
+  const productId = input.dataset.id;
+
+  if (newQuantity < 1) return; // evita valores inválidos
+
+  let cartItems = getLocalStorage("so-cart") || [];
+  const item = cartItems.find((item) => item.Id === productId);
+
+  if (item) {
+    item.Quantity = newQuantity;
+    setLocalStorage("so-cart", cartItems);
+    incrementCartCount();
+    updateCartTotal();
+    renderCartContents();
+  }
 }
 
 function updateCartTotal() {
