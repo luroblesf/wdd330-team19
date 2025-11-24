@@ -31,7 +31,7 @@ function renderCartContents() {
 
   const quantityInputs = document.querySelectorAll(".quantity-input");
   quantityInputs.forEach((input) =>
-    input.addEventListener("change", updateItemQuantity)
+    input.addEventListener("change", updateItemQuantity),
   );
 }
 
@@ -99,7 +99,7 @@ function updateItemQuantity(event) {
   if (newQuantity < 1) return; // evita valores inválidos
 
   let cartItems = getLocalStorage("so-cart") || [];
-  const item = cartItems.find((item) => item.Id === productId);
+  const item = cartItems.find((cartItem) => cartItem.Id === productId);
 
   if (item) {
     item.Quantity = newQuantity;
