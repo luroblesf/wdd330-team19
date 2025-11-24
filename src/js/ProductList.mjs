@@ -3,6 +3,7 @@ import { renderListWithTemplate } from "./utils.mjs";
 function productCardTemplate(product) {
   return `
     <li class="product-card">
+      <p>${flagDiscountedProduct(product).toFixed(0)}% Off</p>
       <a href="/product_pages/?product=${product.Id}">
         <img src="${product.Images.PrimaryMedium}" alt="${product.Name}">
         <h3>${product.Brand.Name}</h3>
@@ -35,4 +36,18 @@ export default class ProductList {
 
   }
 
+}
+
+function flagDiscountedProduct(product) {
+  const finalPrice = Number(product.FinalPrice);
+  const suggestPrice = Number(product.SuggestedRetailPrice);
+
+  // avoid invalid or zero values
+  if (!suggestPrice || suggestPrice <= 0) return 0;
+
+  // ONLY calculate discount if final price is lower
+  if (finalPrice >= suggestPrice) return 0;
+
+  const discountPercentage = ((suggestPrice - finalPrice) / suggestPrice) * 100;
+  return discountPercentage;
 }
