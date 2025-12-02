@@ -64,6 +64,14 @@ function productDetailsTemplate(product) {
 
 
   document.querySelector("#add-to-cart").dataset.id = product.Id;
+
+  const originalPrice = 100;
+  const discountedPrice = 75;
+  const discountPercent = Math.round(((originalPrice - discountedPrice) / originalPrice) * 100);
+
+  document.querySelector('.original-price').textContent = `$${originalPrice.toFixed(2)}`;
+  document.querySelector('.discounted-price').textContent = `$${discountedPrice.toFixed(2)}`;
+  document.querySelector('.discount-badge').textContent = `${discountPercent}% OFF`;
 }
 
 // ************* Alternative Display Product Details Method *******************
