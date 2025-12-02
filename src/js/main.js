@@ -29,3 +29,10 @@ import Alert from "./Alert.js";
 
 const alertManager = new Alert();
 alertManager.renderAlerts();
+
+document.getElementById("newsletter-form").addEventListener("submit", function (e) {
+  e.preventDefault();
+  const email = document.getElementById("newsletter-email").value;
+
+  alert(`Thanks for subscribing, ${email}!`);
+});
